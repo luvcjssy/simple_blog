@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
+    authorize @posts
   end
 
   # GET /posts/1
@@ -15,6 +16,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    authorize @post
   end
 
   # GET /posts/1/edit
@@ -24,6 +26,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = current_user.posts.build(post_params)
+    authorize @post
 
     respond_to do |format|
       if @post.save
@@ -64,6 +67,7 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+    authorize @post
   end
 
   def post_params
