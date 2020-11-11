@@ -10,22 +10,19 @@
   </head>
 
   <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <%= render 'layouts/user/nav_bar' %>
 
-  <ul>
-    <li><%= link_to 'Home', root_path %></li>
-    <ul>
-      <% if user_signed_in? %>
-        <li><%= current_user.email %></li>
-        <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
-      <% else %>
-        <li><%= link_to 'Log In', new_user_session_path %></li>
-        <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-      <% end %>
-    </ul>
-  </ul>
+  <%= render 'layouts/user/header' %>
+
+  <% flash.each do |key, msg| %>
+    <div class="alert <%= alert_for(key) %>">
+      <li><%= msg %></li>
+    </div>
+  <% end %>
 
   <%= yield %>
+
+  <hr>
+  <%= render 'layouts/user/footer' %>
   </body>
 </html>

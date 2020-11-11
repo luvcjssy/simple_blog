@@ -12,11 +12,11 @@ class PostPolicy < ApplicationPolicy
   end
 
   def update?
-    return true if (user.present? && user == post.user) || user.admin?
+    return true if user.present? && (user == post.user || user.admin?)
   end
 
   def destroy?
-    return true if (user.present? && user == post.user) || user.admin?
+    return true if user.present? && (user == post.user || user.admin?)
   end
 
   private
