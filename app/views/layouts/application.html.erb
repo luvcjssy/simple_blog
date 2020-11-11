@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>SimpleBlog</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <title>SimpleBlog</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-  <body>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
   <%= render 'layouts/user/nav_bar' %>
 
   <%= render 'layouts/user/header' %>
 
   <% flash.each do |key, msg| %>
-    <div class="alert <%= alert_for(key) %>">
-      <li><%= msg %></li>
-    </div>
+  <div class="alert <%= alert_for(key) %>">
+    <li><%= msg %></li>
+  </div>
   <% end %>
 
   <%= yield %>
 
   <hr>
   <%= render 'layouts/user/footer' %>
-  </body>
+</body>
+
 </html>
