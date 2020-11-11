@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.includes(:user).order(created_at: :desc)
     authorize @posts
+    render 'posts/admin/index' if admin?
   end
 
   # GET /posts/1
