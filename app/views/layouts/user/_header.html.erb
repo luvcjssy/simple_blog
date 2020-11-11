@@ -1,0 +1,23 @@
+<header class="masthead" style="background-image: url(<%= asset_path('home-bg.jpg') %>)">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <% if @post && @post.persisted? %>
+          <div class="post-heading">
+            <h1><%= @post.title %></h1>
+            <h2 class="subheading"><%= @post.description %></h2>
+            <span class="meta">
+              Posted by <a href="#"><%= @post.user.name %></a> on <%= @post.created_at.strftime('%B %d, %Y') %>
+            </span>
+          </div>
+        <% else %>
+          <div class="site-heading">
+            <h1>Simple Blog</h1>
+            <span class="subheading">A Blog Theme by Start Bootstrap</span>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</header>
