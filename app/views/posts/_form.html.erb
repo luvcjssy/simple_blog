@@ -1,27 +1,27 @@
 <%= form_with(model: post, local: true) do |form| %>
-  <% if post.errors.any? %>
-    <div class="alert alert-danger"><% post.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %></div>
-  <% end %>
+<% if post.errors.any? %>
+<div class="alert alert-danger"><% post.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+  <% end %></div>
+<% end %>
 
-  <div class="form-group row">
-    <%= form.label :title, class: "col-sm-2 col-form-label" %>
-    <%= form.text_field :title, class: "col-sm-10" %>
-  </div>
+<div class="form-group row">
+  <%= form.label :title, class: "col-sm-2 col-form-label" %>
+  <%= form.text_field :title, class: "col-sm-10" %>
+</div>
 
-  <div class="form-group row">
-    <%= form.label :description, class: "col-sm-2 col-form-label" %>
-    <%= form.text_area :description, class: "col-sm-10" %>
-  </div>
+<div class="form-group row">
+  <%= form.label :description, class: "col-sm-2 col-form-label" %>
+  <%= form.text_area :description, class: "col-sm-10" %>
+</div>
 
-  <div class="form-group row">
-    <%= form.label :body, class: "col-sm-2 col-form-label" %>
-    <%= form.text_area :body, class: "col-sm-10" %>
-  </div>
+<div class="form-group row">
+  <%= form.label :body, class: "col-sm-2 col-form-label" %>
+  <%= form.text_area :body, class: "col-sm-10" %>
+</div>
 
-  <div class="clearfix float-right">
-    <%= link_to 'Cancle', root_path, class: "btn btn-default" %>
-    <%= form.submit class: "btn btn-primary" %>
-  </div>
+<div class="clearfix float-right">
+  <%= link_to 'Cancel', root_path, class: "btn btn-default" %>
+  <%= form.submit class: "btn btn-primary" %>
+</div>
 <% end %>

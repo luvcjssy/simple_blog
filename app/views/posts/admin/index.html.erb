@@ -27,17 +27,19 @@
           <div class="col-sm-12">
             <table class="table table-bordered dataTable">
               <thead>
-              <tr role="row">
-                <th>Title</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Body</th>
-                <th></th>
-              </tr>
+                <tr role="row">
+                  <th>ID</th>
+                  <th>Title</th>
+                  <th>Description</th>
+                  <th>Body</th>
+                  <th>Owner</th>
+                  <th></th>
+                </tr>
               </thead>
               <tbody>
-              <% @posts.each do |post| %>
+                <% @posts.each do |post| %>
                 <tr role="row">
+                  <th><%= post.id %></th>
                   <th><%= post.title %></th>
                   <th><%= post.description %></th>
                   <th><%= post.body %></th>
@@ -48,7 +50,7 @@
                     <%= link_to 'Delete', post, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
                   </th>
                 </tr>
-              <% end %>
+                <% end %>
               </tbody>
             </table>
           </div>
