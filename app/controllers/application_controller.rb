@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+  def admin?
+    current_user && current_user.admin?
+  end
+
   protected
 
   def configure_permitted_parameters
@@ -24,5 +28,21 @@ class ApplicationController < ActionController::Base
   def user_not_authorized
     flash[:alert] = 'You are not authorized to perform this action.'
     redirect_to(request.referrer || root_path)
+  end
+
+  def after_sign_in_path_for(_resource)
+    if current_user.admin?
+      dashboard_path
+    else
+      root_path
+    end
+  end
+
+  def after_sign_up_path_for(_resource)
+    if current_user.admin?
+      dashboard_path
+    else
+      root_path
+    end
   end
 end

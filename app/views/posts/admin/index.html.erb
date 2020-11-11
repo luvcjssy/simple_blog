@@ -1,0 +1,59 @@
+<h1 class="mt-4">Posts List</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item">
+    <%= link_to 'Dashboard', dashboard_path %>
+  </li>
+  <li class="breadcrumb-item active">Posts</li>
+</ol>
+
+<div class="card mb-4">
+  <div class="card-header">
+    <svg class="svg-inline--fa fa-table fa-w-16 mr-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="table" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+      <path fill="currentColor" d="M464 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM224 416H64v-96h160v96zm0-160H64v-96h160v96zm224 160H288v-96h160v96zm0-160H288v-96h160v96z"></path>
+    </svg>
+    Posts
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <div class="dataTables_length" id="dataTable_length">
+              <%= link_to 'New Post', new_post_path, class: 'btn btn-primary' %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <table class="table table-bordered dataTable">
+              <thead>
+              <tr role="row">
+                <th>Title</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Body</th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @posts.each do |post| %>
+                <tr role="row">
+                  <th><%= post.title %></th>
+                  <th><%= post.description %></th>
+                  <th><%= post.body %></th>
+                  <th><%= post.user.name %></th>
+                  <th>
+                    <%= link_to 'Show', post, class: 'btn btn-primary' %>
+                    <%= link_to 'Edit', edit_post_path(post), class: 'btn btn-warning' %>
+                    <%= link_to 'Delete', post, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
+                  </th>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+  <%= link_to 'Simple Blog', root_path, class: "navbar-brand" %>
+
+  <!-- Navbar-->
+  <ul class="navbar-nav ml-auto float-right">
+    <% if user_signed_in? %>
+      <li class="nav-item">
+        <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "nav-link" %>
+      </li>
+    <% end %>
+  </ul>
+</nav>
